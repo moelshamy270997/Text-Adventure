@@ -43,91 +43,91 @@ public class GameScript : MonoBehaviour
         switch (currentState)
         {
             case State.campus:
-                storyTxt.text = "You are now in the RUB-Campus";
+                storyTxt.text = "A new day has started. You are now in the Ruhr-University Bochum. You can choose your destination.";
                 choiceAText.text = "1) Go to Mensa";
                 choiceBText.text = "2) Go to Faculty";
-                choiceCText.text = "3) Go to Bib";
-                choiceDText.text = "4) Do sport";
+                choiceCText.text = "3) Go to library";
+                choiceDText.text = "4) Do sports";
                 break;
             case State.mensa:
-                storyTxt.text = "You are in the mensa. Until now you ate " + numberOfMeals + " meals. Please don't eat more than 5 meals.";
+                storyTxt.text = "You are in the cafeteria . Here you can have healthy food. Until now you ate " + numberOfMeals + " meals. Please don't eat more than 5 meals.";
                 choiceAText.text = sportPlayed ? "1) Eat after sport": "1) Eat a meal";
                 choiceBText.text = sportPlayed && eatMeal? "": "2) Go to toilette";
                 choiceCText.text = sportPlayed && eatMeal ? "": "2) Back to campus";
                 choiceDText.text = "";
                 break;
             case State.bib:
-                storyTxt.text = "You are in the bib";
+                storyTxt.text =studying ? "Maybe you should start writing some code as a preparation for your next Game development session." : "You are in the library of the university. The exam period is soon, so start preparing for your exams. You can go to toilet anytime.";
                 choiceCText.text = studying ? "" : "3) Drink coffe and study";
-                choiceAText.text = "1) Go to toilette";
+                choiceAText.text = "1) Go to toilet";
                 choiceBText.text = "2) Back to campus";
                 choiceDText.text = "";
                 break;
             case State.sport:
-                storyTxt.text = "You are in the sport place";
+                storyTxt.text = "Today is a sunny day . You want sure to do some sport. Here you can either play football or swim. Please choose your favorite.";
                 choiceAText.text = "1) Play football";
                 choiceBText.text = "2) Go swimming";
                 choiceCText.text = "3) Back to campus";
                 choiceDText.text = "";
                 break;
             case State.faculty:
-                storyTxt.text = "You are in the faculty";
+                storyTxt.text = "This is the faculty of computer science. You can attend a lecture or do some exercises in labor. You have to do both to be able to write the exam!";
                 choiceAText.text = "1) Listen to lecture";
                 choiceBText.text = "2) Go to labor";
                 choiceDText.text = laborPassed && lectureListened? "3) Write an exam" : "";
                 choiceCText.text = "4) Back to campus";
                 break;
             case State.toilette:
-                storyTxt.text = "You are in the toilette";
+                storyTxt.text = "You are in the toilet now. Do not forget to wash your hands.";
                 choiceAText.text = "1) Back outside";
                 choiceBText.text = "";
                 choiceCText.text = "";
                 choiceDText.text = "";
                 break;
             case State.lecture:
-                storyTxt.text = "You are listening to a lecture";
+                storyTxt.text = "You have attended the lecture of Game Development. Please listen carefully to your instructor.";
                 choiceAText.text = "1) Back to faculty";
                 choiceBText.text = "";
                 choiceCText.text = "";
                 choiceDText.text = "";
                 break;
             case State.labor:
-                storyTxt.text = "You are in the labor, until now you have collected " + laborPoints + " points";
+                storyTxt.text = "You are in the labor. Here we practice coding.Until now you have collected " + laborPoints + " exercise points. You need at least 50 points to be allowed to write the exam. You will be surprised if you gain 100 points!";
                 choiceAText.text = "1) Get more points";
                 choiceBText.text = "2) Back to faculty";
                 choiceCText.text = "";
                 choiceDText.text = "";
                 break;
             case State.exam:
-                storyTxt.text = "You have written your exam successfully";
+                storyTxt.text = "You have written your exam successfully. You have completed your task. The day came to its end.";
                 choiceAText.text = "1) Done for today!";
                 choiceBText.text = "";
                 choiceCText.text = "";
                 choiceDText.text = "";
                 break;
             case State.secret:
-                storyTxt.text = "You have passed your 'Game Development course' Congratualtion!";
+                storyTxt.text = "You have passed your 'Game Development course' Congratulations!";
                 choiceAText.text = "1) Done";
                 choiceBText.text = "";
                 choiceCText.text = "";
                 choiceDText.text = "";
                 break;
             case State.football:
-                storyTxt.text = "You are playing a footbal match";
-                choiceAText.text = "1) Go after that showering";
-                choiceBText.text = "2) Back to sport place";
+                storyTxt.text = "Football is great. When you are finished you can have a shower or go back to campus. ";
+                choiceAText.text = "1) Have a shower";
+                choiceBText.text = "2) Back to campus";
                 choiceCText.text = "";
                 choiceDText.text = "";
                 break;
             case State.swimming:
-                storyTxt.text = "You are swimming in a swimming pool";
-                choiceAText.text = "1) Go after that showering";
+                storyTxt.text = "Swimming makes you feel good.";
+                choiceAText.text = "1) Have a shower";
                 choiceBText.text = "2) Back to campus";
                 choiceCText.text = "";
                 choiceDText.text = "";
                 break;
             case State.showering:
-                storyTxt.text = "You are having a fresh shower";
+                storyTxt.text = "You are having a fresh shower. Please go back to campus when you are done.";
                 choiceAText.text = "1) Back to campus";
                 choiceBText.text = "";
                 choiceCText.text = "";
@@ -168,17 +168,17 @@ public class GameScript : MonoBehaviour
         {
             case State.campus:
                 if (choice == 1) {
-                    ChangeBackground("rub-mensa");
+                    ChangeBackground("mensa");
                     currentState = State.mensa;
                 } 
                 else if (choice == 2)
                 {
-                    ChangeBackground("rub-fac");
+                    ChangeBackground("fac");
                     currentState = State.faculty; 
                 }
                 else if(choice == 3)
                 {
-                    ChangeBackground("rub-bib");
+                    ChangeBackground("bib");
                     currentState = State.bib;
                 } else if(choice == 4)
                 {
@@ -209,7 +209,7 @@ public class GameScript : MonoBehaviour
                 }
                 else if (choice == 3)
                 {
-                    ChangeBackground("rub-campus");
+                    ChangeBackground("campus");
                     currentState = State.campus;
                 }
                 else if (choice == 4)
@@ -227,13 +227,13 @@ public class GameScript : MonoBehaviour
                 else if (choice == 2)
                 {
                     studying = false;
-                    ChangeBackground("rub-campus");
+                    ChangeBackground("campus");
                     currentState = State.campus;
                 }
                 else if (choice == 3)
                 {
                     studying = true;
-                    ChangeBackground("rub-bib2");
+                    ChangeBackground("study");
                     currentState = State.bib;
                 }
                 
@@ -253,7 +253,7 @@ public class GameScript : MonoBehaviour
                 }
                 else if (choice == 3)
                 {
-                    ChangeBackground("rub-campus");
+                    ChangeBackground("campus");
                     currentState = State.campus;
                 }
                 else if (choice == 4)
@@ -278,7 +278,7 @@ public class GameScript : MonoBehaviour
                 }
                 else if (choice == 3)
                 {
-                    ChangeBackground("rub-campus");
+                    ChangeBackground("campus");
                     currentState = State.campus;
                 }
                 else if (choice == 4)
@@ -291,13 +291,13 @@ public class GameScript : MonoBehaviour
                 {
                     if(prePreviousState == State.bib)
                     {
-                        ChangeBackground("rub-bib");
+                        ChangeBackground("bib");
                         currentState = State.bib;
                         
                     }
                     else if(prePreviousState == State.mensa)
                     {
-                        ChangeBackground("rub-mensa");
+                        ChangeBackground("mensa");
                         currentState = State.mensa;
                     }
                     
@@ -307,7 +307,7 @@ public class GameScript : MonoBehaviour
             case State.lecture:
                 if (choice == 1)
                 {
-                    ChangeBackground("rub-fac");
+                    ChangeBackground("fac");
                     currentState = State.faculty;
                 }
                
@@ -325,7 +325,7 @@ public class GameScript : MonoBehaviour
                 } 
                 else if(choice == 2)
                 {
-                    ChangeBackground("rub-fac");
+                    ChangeBackground("fac");
                     currentState = State.faculty;
                 }
                 break;
@@ -351,7 +351,7 @@ public class GameScript : MonoBehaviour
                 }
                 else if (choice == 2)
                 {
-                    ChangeBackground("rub-campus");
+                    ChangeBackground("campus");
                     currentState = State.campus;
                 }
                 break;
@@ -363,14 +363,14 @@ public class GameScript : MonoBehaviour
                 }
                 else if (choice == 2)
                 {
-                    ChangeBackground("rub-campus");
+                    ChangeBackground("campus");
                     currentState = State.campus;
                 }
                 break;
             case State.showering:
                 if (choice == 1)
                 {
-                    ChangeBackground("rub-campus");
+                    ChangeBackground("campus");
                     currentState = State.campus;
                 }
                 break;
